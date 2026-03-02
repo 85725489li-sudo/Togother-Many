@@ -3,145 +3,289 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Togother Many Information Technology Co., Ltd.</title>
+  <title>Togother Many - 精品手游开发商</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --primary: #6C63FF; --secondary: #FF6584; --accent: #43E97B;
+      --primary: #FF6B35; --secondary: #FFB347; --accent: #4ECDC4;
       --dark: #1a1a2e; --darker: #12121f; --card: #1e1e35;
-      --text: #e0e0ff; --muted: #8888aa;
+      --text: #f0f0ff; --muted: #9999bb;
     }
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--darker); color: var(--text); }
+    body { font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif; background: var(--darker); color: var(--text); overflow-x: hidden; }
     html { scroll-behavior: smooth; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 60px; background: rgba(18,18,31,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(108,99,255,0.2); }
-    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #fff; }
-    .logo-icon { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, #6C63FF, #FF6584); display: flex; align-items: center; justify-content: center; }
-    .nav-links a { color: #8888aa; text-decoration: none; margin-left: 28px; font-size: 0.9rem; }
-    .nav-links a:hover { color: #6C63FF; }
-    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 130px 40px 80px; background: radial-gradient(ellipse at 50% 25%, rgba(108,99,255,0.18) 0%, transparent 65%); }
-    .badge { display: inline-block; padding: 6px 18px; border-radius: 20px; background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.4); font-size: 0.78rem; color: #6C63FF; margin-bottom: 22px; letter-spacing: 1px; text-transform: uppercase; }
-    h1 { font-size: clamp(2rem,5vw,3.4rem); font-weight: 800; margin-bottom: 18px; background: linear-gradient(135deg,#fff,#6C63FF,#FF6584); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p { font-size: 1.05rem; color: #8888aa; line-height: 1.75; max-width: 540px; margin: 0 auto 34px; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 60px; background: rgba(18,18,31,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,107,53,0.2); }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #fff; font-size: 1.15rem; }
+    .logo-icon { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #FF6B35, #FFB347); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
+
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 130px 40px 80px; background: radial-gradient(ellipse at 50% 30%, rgba(255,107,53,0.15) 0%, transparent 65%); position: relative; overflow: hidden; }
+    .floats { position: absolute; inset: 0; pointer-events: none; }
+    .f { position: absolute; font-size: 2.5rem; opacity: 0.07; animation: fl 7s ease-in-out infinite; }
+    .f:nth-child(1){top:12%;left:6%;} .f:nth-child(2){top:20%;right:8%;animation-delay:1s;} .f:nth-child(3){bottom:30%;left:10%;animation-delay:2s;} .f:nth-child(4){bottom:18%;right:7%;animation-delay:3s;} .f:nth-child(5){top:55%;left:4%;animation-delay:1.5s;} .f:nth-child(6){top:40%;right:4%;animation-delay:2.5s;}
+    @keyframes fl { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+    .hero-inner { position: relative; z-index: 1; max-width: 780px; }
+    .badge { display: inline-block; padding: 6px 20px; border-radius: 20px; background: rgba(255,107,53,0.15); border: 1px solid rgba(255,107,53,0.4); font-size: 0.78rem; color: var(--primary); margin-bottom: 22px; letter-spacing: 1px; }
+    .hero h1 { font-size: clamp(2rem,5vw,3.4rem); font-weight: 900; line-height: 1.15; margin-bottom: 18px; background: linear-gradient(135deg,#fff 0%,#FF6B35 50%,#FFB347 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .hero p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; max-width: 560px; margin: 0 auto 36px; }
     .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .btn-p { padding: 13px 30px; border-radius: 50px; background: linear-gradient(135deg,#6C63FF,#9b59b6); color: #fff; text-decoration: none; font-weight: 600; }
-    .btn-o { padding: 13px 30px; border-radius: 50px; border: 1px solid rgba(108,99,255,0.4); color: #6C63FF; text-decoration: none; font-weight: 600; }
-    .stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; padding: 55px 40px; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .stat-n { font-size: 2.3rem; font-weight: 800; color: #6C63FF; text-align: center; }
-    .stat-l { font-size: 0.83rem; color: #8888aa; margin-top: 4px; text-align: center; }
-    section { padding: 95px 40px; }
-    #games, #support { background: #1a1a2e; }
-    .sec-head { text-align: center; margin-bottom: 55px; }
-    .sec-tag { display: inline-block; padding: 5px 14px; border-radius: 20px; background: rgba(108,99,255,0.1); border: 1px solid rgba(108,99,255,0.3); font-size: 0.73rem; color: #6C63FF; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
-    .sec-head h2 { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
-    .sec-head p { color: #8888aa; max-width: 460px; margin: 0 auto; }
-    .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; max-width: 880px; margin: 0 auto; }
-    .gc { background: #1e1e35; border-radius: 20px; padding: 34px 28px; border: 1px solid rgba(108,99,255,0.15); position: relative; overflow: hidden; transition: transform 0.3s; }
-    .gc:hover { transform: translateY(-5px); }
-    .gc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
-    .gc.pu::before { background: linear-gradient(90deg,#6C63FF,#FF6584); }
-    .gc.gr::before { background: linear-gradient(90deg,#43E97B,#00b4db); }
-    .gi { width: 62px; height: 62px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; margin-bottom: 18px; }
-    .gi.pu { background: rgba(108,99,255,0.15); }
-    .gi.gr { background: rgba(67,233,123,0.15); }
-    .gc h3 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 9px; }
-    .gc > p { color: #8888aa; font-size: 0.88rem; line-height: 1.7; margin-bottom: 18px; }
-    .tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 22px; }
-    .t { padding: 4px 11px; border-radius: 20px; font-size: 0.73rem; background: rgba(108,99,255,0.1); color: #6C63FF; border: 1px solid rgba(108,99,255,0.2); }
-    .t.g { background: rgba(67,233,123,0.1); color: #43E97B; border-color: rgba(67,233,123,0.2); }
-    .sbtn { display: inline-flex; align-items: center; gap: 7px; padding: 8px 17px; border-radius: 9px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; text-decoration: none; font-size: 0.8rem; }
-    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; max-width: 940px; margin: 0 auto; }
-    .about-text h2 { font-size: 1.95rem; font-weight: 800; color: #fff; margin-bottom: 15px; }
-    .about-text p { color: #8888aa; line-height: 1.8; margin-bottom: 14px; font-size: 0.93rem; }
-    .av { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .ac { background: #1e1e35; border-radius: 15px; padding: 22px; border: 1px solid rgba(108,99,255,0.1); text-align: center; }
-    .ac .ic { font-size: 1.9rem; margin-bottom: 9px; }
-    .ac h4 { font-size: 0.88rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
-    .ac p { font-size: 0.76rem; color: #8888aa; }
-    .sup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 22px; max-width: 880px; margin: 0 auto; }
-    .sc { background: #1e1e35; border-radius: 15px; padding: 26px; border: 1px solid rgba(108,99,255,0.1); text-align: center; transition: border-color 0.3s; }
-    .sc:hover { border-color: rgba(108,99,255,0.4); }
-    .si { font-size: 2.1rem; margin-bottom: 12px; }
-    .sc h3 { font-size: 0.97rem; font-weight: 700; color: #fff; margin-bottom: 7px; }
-    .sc p { font-size: 0.83rem; color: #8888aa; line-height: 1.6; margin-bottom: 14px; }
-    .sl { color: #6C63FF; font-size: 0.83rem; text-decoration: none; font-weight: 500; }
-    footer { text-align: center; padding: 38px; border-top: 1px solid rgba(255,255,255,0.06); color: #8888aa; font-size: 0.83rem; }
-    footer a { color: #6C63FF; text-decoration: none; }
-    @media(max-width:768px) { .about-inner { grid-template-columns: 1fr; } nav { padding: 15px 22px; } .nav-links { display: none; } }
+    .btn-p { padding: 13px 32px; border-radius: 50px; background: linear-gradient(135deg,#FF6B35,#FFB347); color:#fff; font-size:0.95rem; font-weight:700; text-decoration:none; box-shadow:0 8px 24px rgba(255,107,53,0.35); transition:transform 0.2s; }
+    .btn-p:hover { transform:translateY(-2px); }
+    .btn-o { padding:13px 32px; border-radius:50px; border:1px solid rgba(255,107,53,0.4); color:var(--primary); font-size:0.95rem; font-weight:600; text-decoration:none; transition:background 0.2s; }
+    .btn-o:hover { background:rgba(255,107,53,0.1); }
+
+    .stats { display:flex; justify-content:center; gap:60px; flex-wrap:wrap; padding:55px 40px; border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); }
+    .stat { text-align:center; }
+    .stat-n { font-size:2.4rem; font-weight:800; background: linear-gradient(135deg,#FF6B35,#FFB347); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .stat-l { font-size:0.83rem; color:var(--muted); margin-top:4px; }
+
+    section { padding:95px 40px; }
+    #games { background: var(--dark); }
+    .sec-head { text-align:center; margin-bottom:55px; }
+    .sec-tag { display:inline-block; padding:5px 14px; border-radius:20px; background:rgba(255,107,53,0.1); border:1px solid rgba(255,107,53,0.3); font-size:0.73rem; color:var(--primary); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:12px; }
+    .sec-head h2 { font-size:clamp(1.6rem,3vw,2.4rem); font-weight:800; color:#fff; margin-bottom:10px; }
+    .sec-head p { color:var(--muted); font-size:0.98rem; max-width:500px; margin:0 auto; }
+
+    .games-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:24px; max-width:1100px; margin:0 auto; }
+
+    .gc { background:var(--card); border-radius:20px; padding:28px; border:1px solid rgba(255,255,255,0.07); transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:14px; }
+    .gc:hover { transform:translateY(-6px); box-shadow:0 24px 48px rgba(0,0,0,0.35); border-color:rgba(255,107,53,0.3); }
+    .gc-top { display:flex; align-items:center; gap:16px; }
+    .gi { width:60px; height:60px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; flex-shrink:0; }
+    .gc-title h3 { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:4px; }
+    .gc-title span { font-size:0.78rem; color:var(--muted); }
+    .gc p { color:var(--muted); font-size:0.86rem; line-height:1.7; flex:1; }
+    .tags { display:flex; gap:6px; flex-wrap:wrap; }
+    .t { padding:3px 10px; border-radius:20px; font-size:0.72rem; background:rgba(255,107,53,0.1); color:var(--primary); border:1px solid rgba(255,107,53,0.2); }
+    .dl-btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:10px 0; border-radius:12px; background:linear-gradient(135deg,rgba(255,107,53,0.15),rgba(255,179,71,0.15)); border:1px solid rgba(255,107,53,0.3); color:#fff; text-decoration:none; font-size:0.85rem; font-weight:600; transition:background 0.2s,border-color 0.2s; width:100%; }
+    .dl-btn:hover { background:linear-gradient(135deg,rgba(255,107,53,0.3),rgba(255,179,71,0.3)); border-color:rgba(255,107,53,0.6); }
+
+    /* colors per game */
+    .c1 .gi { background: linear-gradient(135deg,rgba(255,107,53,0.2),rgba(255,179,71,0.2)); }
+    .c2 .gi { background: linear-gradient(135deg,rgba(78,205,196,0.2),rgba(85,239,196,0.2)); }
+    .c3 .gi { background: linear-gradient(135deg,rgba(253,121,168,0.2),rgba(232,67,147,0.2)); }
+    .c4 .gi { background: linear-gradient(135deg,rgba(108,99,255,0.2),rgba(165,94,234,0.2)); }
+    .c5 .gi { background: linear-gradient(135deg,rgba(0,210,211,0.2),rgba(68,189,50,0.2)); }
+
+    .about-inner { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; max-width:960px; margin:0 auto; }
+    .about-text .sec-tag { margin-bottom:14px; display:inline-block; }
+    .about-text h2 { font-size:2rem; font-weight:800; color:#fff; margin-bottom:16px; }
+    .about-text p { color:var(--muted); line-height:1.8; margin-bottom:14px; font-size:0.93rem; }
+    .av { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .ac { background:var(--card); border-radius:15px; padding:22px; border:1px solid rgba(255,107,53,0.1); text-align:center; }
+    .ac .ic { font-size:1.9rem; margin-bottom:9px; }
+    .ac h4 { font-size:0.88rem; font-weight:600; color:#fff; margin-bottom:4px; }
+    .ac p { font-size:0.76rem; color:var(--muted); }
+
+    #support { background: var(--dark); }
+    .sup-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; max-width:900px; margin:0 auto; }
+    .sc { background:var(--card); border-radius:15px; padding:26px; border:1px solid rgba(255,255,255,0.07); text-align:center; transition:border-color 0.3s; }
+    .sc:hover { border-color:rgba(255,107,53,0.4); }
+    .si { font-size:2.1rem; margin-bottom:12px; }
+    .sc h3 { font-size:0.97rem; font-weight:700; color:#fff; margin-bottom:7px; }
+    .sc p { font-size:0.82rem; color:var(--muted); line-height:1.6; margin-bottom:14px; }
+    .sl { color:var(--primary); font-size:0.82rem; text-decoration:none; font-weight:500; }
+    .sl:hover { text-decoration:underline; }
+
+    footer { text-align:center; padding:40px; border-top:1px solid rgba(255,255,255,0.06); color:var(--muted); font-size:0.83rem; }
+    footer a { color:var(--primary); text-decoration:none; }
+    footer .footer-links { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:10px; }
+
+    @media(max-width:768px) {
+      .about-inner { grid-template-columns:1fr; }
+      nav { padding:14px 20px; }
+      .nav-links { display:none; }
+      .games-grid { grid-template-columns:1fr; }
+    }
   </style>
 </head>
 <body>
+
 <nav>
-  <div class="logo"><div class="logo-icon">🎮</div> Togother Many</div>
+  <div class="logo">
+    <div class="logo-icon">🎮</div>
+    Togother Many
+  </div>
   <div class="nav-links">
-    <a href="#games">游戏产品</a><a href="#about">关于我们</a><a href="#support">技术支持</a>
+    <a href="#games">游戏产品</a>
+    <a href="#about">关于我们</a>
+    <a href="#support">技术支持</a>
   </div>
 </nav>
+
 <div class="hero">
-  <div>
-    <div class="badge">🚀 Mobile Game Developer</div>
-    <h1>Togother Many Information Technology</h1>
-    <p>打造引人入胜的文字益智游戏，连接全球玩家，让语言学习变得更有趣、更互动。</p>
+  <div class="floats">
+    <div class="f">🌾</div><div class="f">🔧</div><div class="f">🌸</div>
+    <div class="f">🐱</div><div class="f">📦</div><div class="f">🎮</div>
+  </div>
+  <div class="hero-inner">
+    <div class="badge">🇨🇳 专为中国玩家打造 · 精品休闲游戏</div>
+    <h1>让每一刻都充满乐趣</h1>
+    <p>Togother Many 专注打造高品质休闲益智手游，从种田养牧到解压消除，每一款都是用心之作，陪你轻松享受碎片时光。</p>
     <div class="btns">
-      <a href="#games" class="btn-p">探索我们的游戏</a>
-      <a href="#support" class="btn-o">获取技术支持</a>
+      <a href="#games" class="btn-p">🎮 探索游戏</a>
+      <a href="#support" class="btn-o">联系我们</a>
     </div>
   </div>
 </div>
+
 <div class="stats">
-  <div><div class="stat-n">2+</div><div class="stat-l">精品游戏</div></div>
-  <div><div class="stat-n">17+</div><div class="stat-l">支持语言</div></div>
-  <div><div class="stat-n">iOS &amp; Mac</div><div class="stat-l">覆盖平台</div></div>
-  <div><div class="stat-n">全球</div><div class="stat-l">玩家社区</div></div>
+  <div class="stat"><div class="stat-n">5款</div><div class="stat-l">中文精品游戏</div></div>
+  <div class="stat"><div class="stat-n">多类型</div><div class="stat-l">休闲 / 解压 / 养成</div></div>
+  <div class="stat"><div class="stat-n">iOS & iPad</div><div class="stat-l">全平台支持</div></div>
+  <div class="stat"><div class="stat-n">持续更新</div><div class="stat-l">不断优化体验</div></div>
 </div>
+
 <section id="games">
-  <div class="sec-head"><div class="sec-tag">游戏产品</div><h2>我们的精品游戏</h2><p>创意文字游戏，让你在娱乐中挑战智力，与全球玩家一起竞技。</p></div>
+  <div class="sec-head">
+    <div class="sec-tag">🎮 游戏产品</div>
+    <h2>五款精品中文游戏</h2>
+    <p>从种田经营到解压消除，总有一款适合你的口味</p>
+  </div>
   <div class="games-grid">
-    <div class="gc pu">
-      <div class="gi pu">🎯</div>
-      <h3>Hangman Words</h3>
-      <p>经典刽子手猜词游戏的创新升级版！结合双人对战与手指大战玩法，通过拼写单词来拯救刽子手，挑战词汇量与反应速度。</p>
-      <div class="tags"><span class="t">双人对战</span><span class="t">猜词游戏</span><span class="t">益智</span></div>
-      <a href="https://apps.apple.com/us/app/hangman-words-guess-word/id1612037965" target="_blank" class="sbtn">🍎 App Store 下载</a>
+
+    <div class="gc c5">
+      <div class="gc-top">
+        <div class="gi">🌾</div>
+        <div class="gc-title">
+          <h3>我的牧场时光</h3>
+          <span>种田游戏 · 农场牧场物语</span>
+        </div>
+      </div>
+      <p>养老治愈种地种菜，田园经营养成游戏。在宁静的田园中种菜养畜，打造属于自己的梦想牧场，感受慢生活的惬意与美好。</p>
+      <div class="tags">
+        <span class="t">种田养成</span><span class="t">治愈休闲</span><span class="t">经营模拟</span>
+      </div>
+      <a href="https://apps.apple.com/cn/app/id6757685792" target="_blank" class="dl-btn">🍎 App Store 下载</a>
     </div>
-    <div class="gc gr">
-      <div class="gi gr">⚡</div>
-      <h3>Words to Win</h3>
-      <p>拼写越快，平台越高！在竞技场上与其他玩家同台竞技，快速输入答案让你的站台上升。速度与词汇的终极对决！</p>
-      <div class="tags"><span class="t g">多人竞技</span><span class="t g">速度挑战</span><span class="t g">文字冒险</span></div>
-      <a href="https://apps.apple.com/jp/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank" class="sbtn">🍎 App Store 下载</a>
+
+    <div class="gc c4">
+      <div class="gc-top">
+        <div class="gi">🔧</div>
+        <div class="gc-title">
+          <h3>疯狂拧螺丝</h3>
+          <span>打螺丝游戏 · 拔钉子大师</span>
+        </div>
+      </div>
+      <p>花式拧螺丝解谜，益智力打螺丝钉爱消除。超解压的螺丝拆装玩法，关卡精心设计，越玩越上瘾，停不下来！</p>
+      <div class="tags">
+        <span class="t">解压益智</span><span class="t">拧螺丝</span><span class="t">闯关</span>
+      </div>
+      <a href="https://apps.apple.com/cn/app/id6499131070" target="_blank" class="dl-btn">🍎 App Store 下载</a>
     </div>
+
+    <div class="gc c3">
+      <div class="gc-top">
+        <div class="gi">🌸</div>
+        <div class="gc-title">
+          <h3>插花小屋</h3>
+          <span>解压插花消除游戏 · 花朵对对碰</span>
+        </div>
+      </div>
+      <p>开心花花消除，三个对对碰。唯美的插花主题搭配爽快消除玩法，解压又治愈，让你的心情像鲜花一样绽放。</p>
+      <div class="tags">
+        <span class="t">消除对对碰</span><span class="t">解压治愈</span><span class="t">插花</span>
+      </div>
+      <a href="https://apps.apple.com/cn/app/id6472443295" target="_blank" class="dl-btn">🍎 App Store 下载</a>
+    </div>
+
+    <div class="gc c2">
+      <div class="gc-top">
+        <div class="gi">🐱</div>
+        <div class="gc-title">
+          <h3>猫咪寻物记</h3>
+          <span>疯狂找东西 · 寻宝达人</span>
+        </div>
+      </div>
+      <p>大家来找茬，休闲摸鱼必备闯关小游戏。和可爱的猫咪一起踏上寻宝之旅，考验你的观察力，每一关都有新惊喜！</p>
+      <div class="tags">
+        <span class="t">找不同</span><span class="t">寻物解谜</span><span class="t">猫咪</span>
+      </div>
+      <a href="https://apps.apple.com/cn/app/id6465893522" target="_blank" class="dl-btn">🍎 App Store 下载</a>
+    </div>
+
+    <div class="gc c1">
+      <div class="gc-top">
+        <div class="gi">📦</div>
+        <div class="gc-title">
+          <h3>整理师的任务</h3>
+          <span>货柜爱消除 · 收纳消除游戏</span>
+        </div>
+      </div>
+      <p>整理物品收纳大师大闯关。超解压的整理收纳玩法，把凌乱的货柜整理得井井有条，满足你的收纳强迫症！</p>
+      <div class="tags">
+        <span class="t">收纳整理</span><span class="t">消除益智</span><span class="t">解压</span>
+      </div>
+      <a href="https://apps.apple.com/cn/app/id1664066060" target="_blank" class="dl-btn">🍎 App Store 下载</a>
+    </div>
+
   </div>
 </section>
+
 <section id="about">
   <div class="about-inner">
     <div class="about-text">
       <div class="sec-tag">关于我们</div>
-      <h2>专注于文字益智游戏领域</h2>
-      <p>Togother Many Information Technology Co., Ltd. 是一家专注于移动端文字益智游戏的开发商，致力于为全球玩家打造有趣、互动性强的语言学习与娱乐体验。</p>
-      <p>我们的游戏产品支持超过 17 种语言，覆盖 iOS 及 macOS 平台，让世界各地的玩家都能享受到高质量的文字游戏体验。</p>
-      <p>通过不断的技术创新与玩法探索，我们将经典的文字游戏机制与现代多人互动相结合，创造出独特的游戏体验。</p>
+      <h2>用心做好每一款游戏</h2>
+      <p>Togother Many Information Technology Co., Ltd. 是一家专注于移动端休闲益智游戏的开发商，致力于为中国玩家带来高品质、解压治愈的游戏体验。</p>
+      <p>我们的每一款游戏都经过精心设计，无论是田园养成、解压消除还是寻物冒险，都力求让玩家在忙碌的生活中找到片刻的轻松与快乐。</p>
+      <p>游戏全部支持中文，完美适配 iPhone 和 iPad，随时随地享受游戏乐趣。</p>
     </div>
     <div class="av">
-      <div class="ac"><div class="ic">🌍</div><h4>全球化</h4><p>覆盖全球市场，多语言支持</p></div>
-      <div class="ac"><div class="ic">🎮</div><h4>创新玩法</h4><p>经典游戏 × 现代互动</p></div>
-      <div class="ac"><div class="ic">📱</div><h4>多平台</h4><p>iOS · macOS · visionOS</p></div>
-      <div class="ac"><div class="ic">🔒</div><h4>隐私保护</h4><p>遵循 Apple 隐私准则</p></div>
+      <div class="ac"><div class="ic">🇨🇳</div><h4>中文本地化</h4><p>全中文界面，专为中国玩家优化</p></div>
+      <div class="ac"><div class="ic">🎮</div><h4>多元玩法</h4><p>养成 · 消除 · 解谜 · 寻物</p></div>
+      <div class="ac"><div class="ic">📱</div><h4>全平台</h4><p>iPhone · iPad 完美适配</p></div>
+      <div class="ac"><div class="ic">🔒</div><h4>安全放心</h4><p>遵循 Apple 隐私保护标准</p></div>
     </div>
   </div>
 </section>
+
 <section id="support">
-  <div class="sec-head"><div class="sec-tag">技术支持</div><h2>我们随时为你服务</h2><p>遇到问题？我们提供多种支持渠道，帮助你快速解决。</p></div>
+  <div class="sec-head">
+    <div class="sec-tag">技术支持</div>
+    <h2>遇到问题？我们来帮你</h2>
+    <p>提供多种支持渠道，让你的游戏体验更顺畅</p>
+  </div>
   <div class="sup-grid">
-    <div class="sc"><div class="si">📩</div><h3>联系我们</h3><p>如有任何问题或建议，欢迎通过 App Store 开发者页面联系我们。</p><a href="https://apps.apple.com/jp/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank" class="sl">前往 App Store →</a></div>
-    <div class="sc"><div class="si">🔒</div><h3>隐私政策</h3><p>我们重视用户隐私，所有数据处理均遵循 Apple 隐私政策规范，透明可信。</p><a href="https://apps.apple.com/jp/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank" class="sl">查看详情 →</a></div>
-    <div class="sc"><div class="si">⭐</div><h3>游戏评分与反馈</h3><p>你的评价对我们非常重要！在 App Store 中为游戏打分，帮助我们持续改进。</p><a href="https://apps.apple.com/us/app/hangman-words-guess-word/id1612037965" target="_blank" class="sl">去评分 →</a></div>
-    <div class="sc"><div class="si">🛠️</div><h3>版本更新</h3><p>我们持续优化产品体验，定期发布更新修复问题、增加新内容，保持最新版本即可。</p><a href="https://apps.apple.com/jp/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank" class="sl">查看最新版本 →</a></div>
+    <div class="sc">
+      <div class="si">📩</div>
+      <h3>联系开发者</h3>
+      <p>通过 App Store 开发者主页联系我们，我们会尽快回复。</p>
+      <a href="https://apps.apple.com/cn/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank" class="sl">前往 App Store →</a>
+    </div>
+    <div class="sc">
+      <div class="si">🔒</div>
+      <h3>隐私政策</h3>
+      <p>我们严格遵守用户隐私保护规范，不收集任何不必要的个人信息。</p>
+      <a href="https://apps.apple.com/cn/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank" class="sl">查看详情 →</a>
+    </div>
+    <div class="sc">
+      <div class="si">⭐</div>
+      <h3>给我们评分</h3>
+      <p>喜欢我们的游戏？在 App Store 留下好评，支持我们继续创作！</p>
+      <a href="https://apps.apple.com/cn/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank" class="sl">去评分 →</a>
+    </div>
+    <div class="sc">
+      <div class="si">🛠️</div>
+      <h3>版本更新</h3>
+      <p>我们持续优化游戏体验，保持 App Store 最新版本以获得最佳效果。</p>
+      <a href="https://apps.apple.com/cn/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank" class="sl">查看更新 →</a>
+    </div>
   </div>
 </section>
-<footer>
-  <p>© 2025 Togother Many Information Technology Co., Ltd. All rights reserved.</p>
-  <p style="margin-top:8px;"><a href="https://apps.apple.com/jp/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank">App Store 开发者主页</a> · <a href="#support">技术支持</a> · <a href="#about">关于我们</a></p>
-</footer>
-</body>
 
+<footer>
+  <p>© 2025 Togother Many Information Technology Co., Ltd. 保留所有权利。</p>
+  <div class="footer-links">
+    <a href="https://apps.apple.com/cn/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank">App Store 主页</a>
+    <a href="#games">游戏产品</a>
+    <a href="#about">关于我们</a>
+    <a href="#support">技术支持</a>
+  </div>
+</footer>
+
+</body>
 </html>
+
