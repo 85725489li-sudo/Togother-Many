@@ -13,15 +13,15 @@
     body { font-family: 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans', system-ui, sans-serif; background: var(--darker); color: var(--text); overflow-x: hidden; }
     html { scroll-behavior: smooth; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 60px; background: rgba(18,18,31,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,107,53,0.2); }
-    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #fff; font-size: 1.15rem; }
-    .logo-icon { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #FF6B35, #FFB347); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: rgba(18,18,31,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,107,53,0.2); }
+    .logo { display: flex; align-items: center; gap: 0; text-decoration: none; }
+    .logo svg { width: 160px; height: 40px; }
     .nav-links { display: flex; gap: 28px; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
     .nav-links a:hover { color: var(--primary); }
 
     .hero { min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; }
-    .hero-bg { position: absolute; inset: 0; background: url('./hero.jpg') center center / cover no-repeat; }
+    .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center center; background-repeat: no-repeat; transition: opacity 0.6s ease; }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.65) 100%); }
     .hero-content { position: relative; z-index: 10; max-width: 700px; padding: 0 20px; }
     .badge { display: inline-block; padding: 7px 22px; border-radius: 20px; background: rgba(0,0,0,0.35); backdrop-filter: blur(8px); border: 1px solid rgba(255,179,71,0.5); font-size: 0.8rem; color: #FFD700; margin-bottom: 20px; letter-spacing: 1px; }
@@ -33,11 +33,7 @@
     .btn-o { padding:13px 32px; border-radius:50px; background: rgba(255,255,255,0.15); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.4); color:#fff; font-size:0.95rem; font-weight:600; text-decoration:none; transition:background 0.2s; }
     .btn-o:hover { background:rgba(255,255,255,0.25); }
 
-    .stats { display:flex; justify-content:center; gap:60px; flex-wrap:wrap; padding:55px 40px; border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); }
-    .stat { text-align:center; }
-    .stat-n { font-size:2.4rem; font-weight:800; background: linear-gradient(135deg,#FF6B35,#FFB347); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .stat-l { font-size:0.83rem; color:var(--muted); margin-top:4px; }
-
+    /* GAMES 在前 */
     section { padding:95px 40px; }
     #games { background: var(--dark); }
     .sec-head { text-align:center; margin-bottom:55px; }
@@ -45,21 +41,28 @@
     .sec-head h2 { font-size:clamp(1.6rem,3vw,2.4rem); font-weight:800; color:#fff; margin-bottom:10px; }
     .sec-head p { color:var(--muted); font-size:0.98rem; max-width:500px; margin:0 auto; }
 
+    /* GAME CARDS — icon 放大到 90px */
     .games-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:24px; max-width:1100px; margin:0 auto; }
     .gc { background:var(--card); border-radius:20px; padding:28px; border:1px solid rgba(255,255,255,0.07); transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s; display:flex; flex-direction:column; gap:14px; }
     .gc:hover { transform:translateY(-6px); box-shadow:0 24px 48px rgba(0,0,0,0.35); border-color:rgba(255,107,53,0.3); }
-    .gc-top { display:flex; align-items:center; gap:16px; }
-    .app-icon { width:64px; height:64px; border-radius:14px; object-fit:cover; flex-shrink:0; }
-    .app-icon-placeholder { width:64px; height:64px; border-radius:14px; background:linear-gradient(135deg,rgba(255,107,53,0.3),rgba(255,179,71,0.3)); display:flex; align-items:center; justify-content:center; font-size:1.8rem; flex-shrink:0; }
-    .gc-title h3 { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:4px; }
-    .gc-title span { font-size:0.78rem; color:var(--muted); }
+    .gc-top { display:flex; align-items:center; gap:18px; }
+    .app-icon { width:90px; height:90px; border-radius:20px; object-fit:cover; flex-shrink:0; box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+    .app-icon-placeholder { width:90px; height:90px; border-radius:20px; background:linear-gradient(135deg,rgba(255,107,53,0.3),rgba(255,179,71,0.3)); display:flex; align-items:center; justify-content:center; font-size:2.2rem; flex-shrink:0; }
+    .gc-title h3 { font-size:1.15rem; font-weight:700; color:#fff; margin-bottom:5px; }
+    .gc-title span { font-size:0.8rem; color:var(--muted); }
     .gc > p { color:var(--muted); font-size:0.86rem; line-height:1.7; flex:1; }
     .tags { display:flex; gap:6px; flex-wrap:wrap; }
     .t { padding:3px 10px; border-radius:20px; font-size:0.72rem; background:rgba(255,107,53,0.1); color:var(--primary); border:1px solid rgba(255,107,53,0.2); }
-    .dl-btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:10px 0; border-radius:12px; background:linear-gradient(135deg,rgba(255,107,53,0.15),rgba(255,179,71,0.15)); border:1px solid rgba(255,107,53,0.3); color:#fff; text-decoration:none; font-size:0.85rem; font-weight:600; transition:background 0.2s; }
-    .dl-btn:hover { background:linear-gradient(135deg,rgba(255,107,53,0.3),rgba(255,179,71,0.3)); border-color:rgba(255,107,53,0.6); }
-    .loading-icon { width:64px; height:64px; border-radius:14px; background:linear-gradient(135deg,#2a2a45,#1e1e35); animation:pulse 1.5s ease-in-out infinite; flex-shrink:0; }
+    .dl-btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:11px 0; border-radius:12px; background:linear-gradient(135deg,rgba(255,107,53,0.15),rgba(255,179,71,0.15)); border:1px solid rgba(255,107,53,0.3); color:#fff; text-decoration:none; font-size:0.85rem; font-weight:600; transition:background 0.2s; }
+    .dl-btn:hover { background:linear-gradient(135deg,rgba(255,107,53,0.3),rgba(255,179,71,0.3)); }
+    .loading-icon { width:90px; height:90px; border-radius:20px; background:linear-gradient(135deg,#2a2a45,#1e1e35); animation:pulse 1.5s ease-in-out infinite; flex-shrink:0; }
     @keyframes pulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+    /* STATS 在 games 后面 */
+    .stats { display:flex; justify-content:center; gap:60px; flex-wrap:wrap; padding:55px 40px; background: var(--darker); border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); }
+    .stat { text-align:center; }
+    .stat-n { font-size:2.4rem; font-weight:800; background: linear-gradient(135deg,#FF6B35,#FFB347); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .stat-l { font-size:0.83rem; color:var(--muted); margin-top:4px; }
 
     .about-inner { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; max-width:960px; margin:0 auto; }
     .about-text h2 { font-size:2rem; font-weight:800; color:#fff; margin-bottom:16px; }
@@ -88,19 +91,40 @@
 
     @media(max-width:768px) {
       .about-inner { grid-template-columns:1fr; }
-      nav { padding:14px 20px; }
+      nav { padding:12px 20px; }
       .nav-links { display:none; }
       .games-grid { grid-template-columns:1fr; }
+      .logo svg { width:130px; height:32px; }
+      .stats { gap:30px; padding:40px 20px; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">
-    <div class="logo-icon">🎮</div>
-    <span id="nav-brand">Togother Many</span>
-  </div>
+  <a href="#" class="logo">
+    <svg viewBox="0 0 200 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#FF6B35"/>
+          <stop offset="100%" stop-color="#FFB347"/>
+        </linearGradient>
+        <linearGradient id="starGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#FFD700"/>
+          <stop offset="100%" stop-color="#FF6B35"/>
+        </linearGradient>
+      </defs>
+      <rect x="2" y="4" width="36" height="36" rx="10" fill="url(#logoGrad)"/>
+      <rect x="9" y="16" width="22" height="13" rx="4" fill="white" opacity="0.95"/>
+      <circle cx="16" cy="22" r="2" fill="url(#logoGrad)"/>
+      <circle cx="25" cy="20" r="1.8" fill="url(#logoGrad)"/>
+      <circle cx="29" cy="23" r="1.8" fill="#FF6B35" opacity="0.7"/>
+      <polygon points="34,6 35.2,9.2 38.5,9.2 35.9,11.2 36.9,14.4 34,12.4 31.1,14.4 32.1,11.2 29.5,9.2 32.8,9.2" fill="url(#starGrad)" opacity="0.9"/>
+      <text x="46" y="20" font-family="'Arial Rounded MT Bold','Helvetica Rounded',Arial,sans-serif" font-size="13" font-weight="800" fill="white" letter-spacing="0.3">Togother</text>
+      <text x="46" y="36" font-family="'Arial Rounded MT Bold','Helvetica Rounded',Arial,sans-serif" font-size="13" font-weight="800" fill="url(#logoGrad)" letter-spacing="0.5">Many</text>
+      <circle cx="118" cy="27" r="2.5" fill="url(#logoGrad)" opacity="0.6"/>
+    </svg>
+  </a>
   <div class="nav-links">
     <a href="#games" id="nav-games">Games</a>
     <a href="#about" id="nav-about">About</a>
@@ -108,13 +132,14 @@
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="badge" id="hero-badge">🎮 Togother Many · Premium Mobile Games</div>
     <h1 id="hero-title">Fun for Every Moment</h1>
-    <p id="hero-desc">From relaxing farm life to word puzzles, every game is crafted with care to make your spare time enjoyable.</p>
+    <p id="hero-desc">From relaxing farm life to word puzzles, every game is crafted with care.</p>
     <div class="btns">
       <a href="#games" class="btn-p" id="btn-explore">🎮 Explore Games</a>
       <a href="#support" class="btn-o" id="btn-contact">Contact Us</a>
@@ -122,13 +147,7 @@
   </div>
 </div>
 
-<div class="stats">
-  <div class="stat"><div class="stat-n" id="stat-n1">10+</div><div class="stat-l" id="stat-l1">Premium Games</div></div>
-  <div class="stat"><div class="stat-n" id="stat-n2">4</div><div class="stat-l" id="stat-l2">Languages</div></div>
-  <div class="stat"><div class="stat-n">iOS & iPad</div><div class="stat-l" id="stat-l3">Platforms</div></div>
-  <div class="stat"><div class="stat-n" id="stat-n4">Global</div><div class="stat-l" id="stat-l4">Players</div></div>
-</div>
-
+<!-- GAMES 在前 -->
 <section id="games">
   <div class="sec-head">
     <div class="sec-tag" id="sec-tag-games">🎮 OUR GAMES</div>
@@ -138,13 +157,22 @@
   <div class="games-grid" id="gamesGrid"></div>
 </section>
 
+<!-- STATS 在后 -->
+<div class="stats">
+  <div class="stat"><div class="stat-n" id="stat-n1">10+</div><div class="stat-l" id="stat-l1">Premium Games</div></div>
+  <div class="stat"><div class="stat-n" id="stat-n2">4</div><div class="stat-l" id="stat-l2">Languages</div></div>
+  <div class="stat"><div class="stat-n">iOS & iPad</div><div class="stat-l" id="stat-l3">Platforms</div></div>
+  <div class="stat"><div class="stat-n" id="stat-n4">Global</div><div class="stat-l" id="stat-l4">Players</div></div>
+</div>
+
+<!-- ABOUT -->
 <section id="about">
   <div class="about-inner">
     <div class="about-text">
       <div class="sec-tag" id="sec-tag-about">ABOUT US</div>
       <h2 id="about-title">Crafting Games with Heart</h2>
       <p id="about-p1">Togother Many Information Technology Co., Ltd. is a mobile game developer dedicated to creating high-quality, relaxing gaming experiences for players around the world.</p>
-      <p id="about-p2">Each of our games is carefully designed to bring joy and relaxation to your daily life, whether it's word puzzles, farm simulation, or casual elimination games.</p>
+      <p id="about-p2">Each of our games is carefully designed to bring joy and relaxation to your daily life.</p>
       <p id="about-p3">All games are fully optimized for iPhone and iPad, ready to enjoy anytime, anywhere.</p>
     </div>
     <div class="av">
@@ -156,11 +184,12 @@
   </div>
 </section>
 
+<!-- SUPPORT -->
 <section id="support">
   <div class="sec-head">
     <div class="sec-tag" id="sec-tag-support">SUPPORT</div>
     <h2 id="support-title">We're Here to Help</h2>
-    <p id="support-desc">Multiple support channels to ensure your best gaming experience</p>
+    <p id="support-desc">Multiple support channels for your best gaming experience</p>
   </div>
   <div class="sup-grid">
     <div class="sc">
@@ -202,216 +231,182 @@
 </footer>
 
 <script>
-// ─── 多语言内容 ───────────────────────────────────────────
+const heroBgs = {
+  zh:"url('./hero.jpg')",
+  ja:"url('./hero-ja.jpg')",
+  ko:"url('./hero-ko.jpg')",
+  en:"url('./hero-en.jpg')"
+};
+
 const i18n = {
-  zh: {
-    title: 'Togother Many - 精品手游',
-    badge: '🌾 Togother Many · 精品休闲游戏',
-    heroTitle: '让每一刻都充满乐趣',
-    heroDesc: '从宁静的田园牧场到解压消除，每一款游戏都是用心之作，陪你轻松享受每个碎片时光。',
-    btnExplore: '🎮 探索游戏', btnContact: '联系我们',
-    navGames: '游戏产品', navAbout: '关于我们', navSupport: '技术支持',
-    statN1: '5款', statL1: '中文精品游戏', statL2: '支持语言', statL3: '覆盖平台', statN4: '全球', statL4: '玩家社区',
-    secTagGames: '🎮 游戏产品', gamesTitle: '五款精品中文游戏', gamesDesc: '从种田经营到解压消除，总有一款适合你的口味',
-    secTagAbout: '关于我们', aboutTitle: '用心做好每一款游戏',
-    aboutP1: 'Togother Many Information Technology Co., Ltd. 是一家专注于移动端休闲益智游戏的开发商，致力于为中国玩家带来高品质、解压治愈的游戏体验。',
-    aboutP2: '我们的每一款游戏都经过精心设计，无论是田园养成、解压消除还是寻物冒险，都力求让玩家在忙碌的生活中找到片刻的轻松与快乐。',
-    aboutP3: '游戏全部支持中文，完美适配 iPhone 和 iPad，随时随地享受游戏乐趣。',
-    feat1T: '中文本地化', feat1D: '全中文界面，专为中国玩家优化',
-    feat2T: '多元玩法', feat2D: '养成 · 消除 · 解谜 · 寻物',
-    feat3T: '全平台', feat3D: 'iPhone · iPad 完美适配',
-    feat4T: '安全放心', feat4D: '遵循 Apple 隐私保护标准',
-    secTagSupport: '技术支持', supportTitle: '遇到问题？我们来帮你', supportDesc: '提供多种支持渠道，让你的游戏体验更顺畅',
-    sup1T: '邮件支持', sup1D: '有任何问题或建议，直接发邮件给我们，工作日内快速回复。',
-    sup2T: 'App Store 主页', sup2D: '访问我们的 App Store 开发者主页，查看所有游戏及最新动态。', sup2L: '前往 App Store →',
-    sup3T: '隐私政策', sup3D: '我们严格遵守用户隐私保护规范，不收集任何不必要的个人信息。', sup3L: '查看详情 →',
-    sup4T: '给我们评分', sup4D: '喜欢我们的游戏？在 App Store 留下好评，支持我们继续创作！', sup4L: '去评分 →',
-    footerCopy: '© 2025 Togother Many Information Technology Co., Ltd. 保留所有权利。',
-    footerStore: 'App Store 主页', footerGames: '游戏产品', footerAbout: '关于我们', footerSupport: '技术支持',
-    dlBtn: '🍎 App Store 下载', storeCountry: 'cn'
+  zh:{
+    title:'Togother Many - 精品手游',badge:'🌾 Togother Many · 精品休闲游戏',
+    heroTitle:'让每一刻都充满乐趣',heroDesc:'从宁静的田园牧场到解压消除，每一款游戏都是用心之作，陪你轻松享受每个碎片时光。',
+    btnExplore:'🎮 探索游戏',btnContact:'联系我们',
+    navGames:'游戏产品',navAbout:'关于我们',navSupport:'技术支持',
+    statN1:'5款',statL1:'中文精品游戏',statL2:'支持语言',statL3:'覆盖平台',statN4:'全球',statL4:'玩家社区',
+    secTagGames:'🎮 游戏产品',gamesTitle:'五款精品中文游戏',gamesDesc:'从种田经营到解压消除，总有一款适合你的口味',
+    secTagAbout:'关于我们',aboutTitle:'用心做好每一款游戏',
+    aboutP1:'Togother Many Information Technology Co., Ltd. 是一家专注于移动端休闲益智游戏的开发商，致力于为中国玩家带来高品质、解压治愈的游戏体验。',
+    aboutP2:'我们的每一款游戏都经过精心设计，无论是田园养成、解压消除还是寻物冒险，都力求让玩家找到片刻的轻松与快乐。',
+    aboutP3:'游戏全部支持中文，完美适配 iPhone 和 iPad，随时随地享受游戏乐趣。',
+    feat1T:'中文本地化',feat1D:'全中文界面，专为中国玩家优化',
+    feat2T:'多元玩法',feat2D:'养成 · 消除 · 解谜 · 寻物',
+    feat3T:'全平台',feat3D:'iPhone · iPad 完美适配',
+    feat4T:'安全放心',feat4D:'遵循 Apple 隐私保护标准',
+    secTagSupport:'技术支持',supportTitle:'遇到问题？我们来帮你',supportDesc:'提供多种支持渠道，让你的游戏体验更顺畅',
+    sup1T:'邮件支持',sup1D:'有任何问题或建议，直接发邮件，工作日内快速回复。',
+    sup2T:'App Store 主页',sup2D:'访问我们的开发者主页，查看所有游戏及最新动态。',sup2L:'前往 App Store →',
+    sup3T:'隐私政策',sup3D:'严格遵守用户隐私保护规范，不收集不必要的个人信息。',sup3L:'查看详情 →',
+    sup4T:'给我们评分',sup4D:'喜欢我们的游戏？在 App Store 留下好评支持我们！',sup4L:'去评分 →',
+    footerCopy:'© 2025 Togother Many Information Technology Co., Ltd. 保留所有权利。',
+    footerStore:'App Store 主页',footerGames:'游戏产品',footerAbout:'关于我们',footerSupport:'技术支持',
+    dlBtn:'🍎 App Store 下载',storeCountry:'cn'
   },
-  ja: {
-    title: 'Togother Many - プレミアムゲーム',
-    badge: '🎮 Togother Many · プレミアムモバイルゲーム',
-    heroTitle: '毎瞬間を楽しく',
-    heroDesc: '言葉パズルから農場シミュレーションまで、丁寧に作られたゲームで余暇を楽しもう。',
-    btnExplore: '🎮 ゲームを探す', btnContact: 'お問い合わせ',
-    navGames: 'ゲーム', navAbout: '私たちについて', navSupport: 'サポート',
-    statN1: '4本', statL1: '日本語ゲーム', statL2: '対応言語', statL3: '対応プラットフォーム', statN4: 'グローバル', statL4: 'プレイヤー',
-    secTagGames: '🎮 ゲーム', gamesTitle: '日本語プレミアムゲーム', gamesDesc: '言葉パズルから消去ゲームまで、あなたにぴったりの一本',
-    secTagAbout: '私たちについて', aboutTitle: '心を込めてゲームを作る',
-    aboutP1: 'Togother Many Information Technology Co., Ltd. は、世界中のプレイヤーに高品質でリラックスできるゲーム体験を提供することに専念するモバイルゲーム開発会社です。',
-    aboutP2: '言葉パズル、農場シミュレーション、カジュアル消去ゲームなど、日常生活に喜びとリラックスをもたらすゲームを丁寧に設計しています。',
-    aboutP3: 'すべてのゲームはiPhoneとiPadに完全対応しており、いつでもどこでも楽しめます。',
-    feat1T: 'グローバル', feat1D: '複数言語対応、世界中で利用可能',
-    feat2T: '多様なゲーム', feat2D: '言葉 · 農場 · パズル · カジュアル',
-    feat3T: 'マルチプラットフォーム', feat3D: 'iPhone · iPad 最適化',
-    feat4T: 'プライバシー重視', feat4D: 'Appleプライバシー基準準拠',
-    secTagSupport: 'サポート', supportTitle: 'お気軽にご相談ください', supportDesc: '最高のゲーム体験のために複数のサポートチャンネルをご用意',
-    sup1T: 'メールサポート', sup1D: 'ご質問があればメールでお問い合わせください。迅速に対応いたします。',
-    sup2T: 'App Store', sup2D: 'App Storeの開発者ページで全ゲームと最新情報をご確認ください。', sup2L: 'App Storeへ →',
-    sup3T: 'プライバシーポリシー', sup3D: 'プライバシー規制を厳守し、必要なデータのみ収集しています。', sup3L: '詳細を見る →',
-    sup4T: '評価する', sup4D: 'ゲームをお楽しみいただけましたか？App Storeでレビューをお願いします！', sup4L: '評価する →',
-    footerCopy: '© 2025 Togother Many Information Technology Co., Ltd. All rights reserved.',
-    footerStore: 'App Store', footerGames: 'ゲーム', footerAbout: '私たちについて', footerSupport: 'サポート',
-    dlBtn: '🍎 App Store でダウンロード', storeCountry: 'jp'
+  ja:{
+    title:'Togother Many - プレミアムゲーム',badge:'🎮 Togother Many · プレミアムモバイルゲーム',
+    heroTitle:'毎瞬間を楽しく',heroDesc:'言葉パズルから農場シミュレーションまで、丁寧に作られたゲームで余暇を楽しもう。',
+    btnExplore:'🎮 ゲームを探す',btnContact:'お問い合わせ',
+    navGames:'ゲーム',navAbout:'私たちについて',navSupport:'サポート',
+    statN1:'4本',statL1:'日本語ゲーム',statL2:'対応言語',statL3:'対応プラットフォーム',statN4:'グローバル',statL4:'プレイヤー',
+    secTagGames:'🎮 ゲーム',gamesTitle:'日本語プレミアムゲーム',gamesDesc:'言葉パズルから消去ゲームまで、あなたにぴったりの一本',
+    secTagAbout:'私たちについて',aboutTitle:'心を込めてゲームを作る',
+    aboutP1:'Togother Many Information Technology Co., Ltd. は、世界中のプレイヤーに高品質でリラックスできるゲーム体験を提供するモバイルゲーム開発会社です。',
+    aboutP2:'言葉パズル、農場シミュレーション、カジュアル消去ゲームなど、日常に喜びとリラックスをもたらすゲームを丁寧に設計しています。',
+    aboutP3:'すべてのゲームはiPhoneとiPadに完全対応、いつでもどこでも楽しめます。',
+    feat1T:'グローバル',feat1D:'複数言語対応、世界中で利用可能',
+    feat2T:'多様なゲーム',feat2D:'言葉 · 農場 · パズル · カジュアル',
+    feat3T:'マルチプラットフォーム',feat3D:'iPhone · iPad 最適化',
+    feat4T:'プライバシー重視',feat4D:'Appleプライバシー基準準拠',
+    secTagSupport:'サポート',supportTitle:'お気軽にご相談ください',supportDesc:'最高のゲーム体験のために複数のサポートチャンネルをご用意',
+    sup1T:'メールサポート',sup1D:'ご質問はメールでお問い合わせください。迅速に対応します。',
+    sup2T:'App Store',sup2D:'App Storeの開発者ページで全ゲームと最新情報をご確認ください。',sup2L:'App Storeへ →',
+    sup3T:'プライバシーポリシー',sup3D:'プライバシー規制を厳守し、必要なデータのみ収集しています。',sup3L:'詳細を見る →',
+    sup4T:'評価する',sup4D:'ゲームをお楽しみいただけましたか？App Storeでレビューをお願いします！',sup4L:'評価する →',
+    footerCopy:'© 2025 Togother Many Information Technology Co., Ltd. All rights reserved.',
+    footerStore:'App Store',footerGames:'ゲーム',footerAbout:'私たちについて',footerSupport:'サポート',
+    dlBtn:'🍎 App Store でダウンロード',storeCountry:'jp'
   },
-  ko: {
-    title: 'Togother Many - 프리미엄 게임',
-    badge: '🎮 Togother Many · 프리미엄 모바일 게임',
-    heroTitle: '매 순간을 즐겁게',
-    heroDesc: '단어 퍼즐부터 농장 시뮬레이션까지, 정성껏 만든 게임으로 여가를 즐기세요.',
-    btnExplore: '🎮 게임 탐색', btnContact: '문의하기',
-    navGames: '게임', navAbout: '회사 소개', navSupport: '지원',
-    statN1: '1개', statL1: '한국어 게임', statL2: '지원 언어', statL3: '지원 플랫폼', statN4: '글로벌', statL4: '플레이어',
-    secTagGames: '🎮 게임', gamesTitle: '한국어 프리미엄 게임', gamesDesc: '재미있는 단어 게임으로 두뇌를 자극하세요',
-    secTagAbout: '회사 소개', aboutTitle: '정성으로 만드는 게임',
-    aboutP1: 'Togother Many Information Technology Co., Ltd.는 전 세계 플레이어에게 고품질의 편안한 게임 경험을 제공하는 데 전념하는 모바일 게임 개발사입니다.',
-    aboutP2: '단어 퍼즐, 농장 시뮬레이션, 캐주얼 제거 게임 등 일상에 즐거움과 휴식을 가져다주는 게임을 정성껏 설계합니다.',
-    aboutP3: '모든 게임은 iPhone과 iPad에 완벽하게 최적화되어 언제 어디서나 즐길 수 있습니다.',
-    feat1T: '글로벌', feat1D: '다국어 지원, 전 세계 이용 가능',
-    feat2T: '다양한 게임', feat2D: '단어 · 농장 · 퍼즐 · 캐주얼',
-    feat3T: '멀티 플랫폼', feat3D: 'iPhone · iPad 최적화',
-    feat4T: '개인정보 보호', feat4D: 'Apple 개인정보 보호 기준 준수',
-    secTagSupport: '지원', supportTitle: '도움이 필요하신가요?', supportDesc: '최상의 게임 경험을 위한 다양한 지원 채널',
-    sup1T: '이메일 지원', sup1D: '질문이 있으시면 이메일로 문의해 주세요. 신속하게 답변 드리겠습니다.',
-    sup2T: 'App Store', sup2D: 'App Store 개발자 페이지에서 모든 게임과 최신 정보를 확인하세요.', sup2L: 'App Store 바로가기 →',
-    sup3T: '개인정보 처리방침', sup3D: '개인정보 규정을 엄격히 준수하며 필요한 데이터만 수집합니다.', sup3L: '자세히 보기 →',
-    sup4T: '평가하기', sup4D: '게임이 마음에 드셨나요? App Store에서 리뷰를 남겨주세요!', sup4L: '평가하기 →',
-    footerCopy: '© 2025 Togother Many Information Technology Co., Ltd. All rights reserved.',
-    footerStore: 'App Store', footerGames: '게임', footerAbout: '회사 소개', footerSupport: '지원',
-    dlBtn: '🍎 App Store 다운로드', storeCountry: 'kr'
+  ko:{
+    title:'Togother Many - 프리미엄 게임',badge:'🎮 Togother Many · 프리미엄 모바일 게임',
+    heroTitle:'매 순간을 즐겁게',heroDesc:'단어 퍼즐부터 농장 시뮬레이션까지, 정성껏 만든 게임으로 여가를 즐기세요.',
+    btnExplore:'🎮 게임 탐색',btnContact:'문의하기',
+    navGames:'게임',navAbout:'회사 소개',navSupport:'지원',
+    statN1:'1개',statL1:'한국어 게임',statL2:'지원 언어',statL3:'지원 플랫폼',statN4:'글로벌',statL4:'플레이어',
+    secTagGames:'🎮 게임',gamesTitle:'한국어 프리미엄 게임',gamesDesc:'재미있는 단어 게임으로 두뇌를 자극하세요',
+    secTagAbout:'회사 소개',aboutTitle:'정성으로 만드는 게임',
+    aboutP1:'Togother Many Information Technology Co., Ltd.는 전 세계 플레이어에게 고품질의 편안한 게임 경험을 제공하는 모바일 게임 개발사입니다.',
+    aboutP2:'단어 퍼즐, 농장 시뮬레이션, 캐주얼 제거 게임 등 일상에 즐거움과 휴식을 가져다주는 게임을 정성껏 설계합니다.',
+    aboutP3:'모든 게임은 iPhone과 iPad에 완벽하게 최적화되어 언제 어디서나 즐길 수 있습니다.',
+    feat1T:'글로벌',feat1D:'다국어 지원, 전 세계 이용 가능',
+    feat2T:'다양한 게임',feat2D:'단어 · 농장 · 퍼즐 · 캐주얼',
+    feat3T:'멀티 플랫폼',feat3D:'iPhone · iPad 최적화',
+    feat4T:'개인정보 보호',feat4D:'Apple 개인정보 보호 기준 준수',
+    secTagSupport:'지원',supportTitle:'도움이 필요하신가요?',supportDesc:'최상의 게임 경험을 위한 다양한 지원 채널',
+    sup1T:'이메일 지원',sup1D:'질문이 있으시면 이메일로 문의해 주세요. 신속하게 답변 드립니다.',
+    sup2T:'App Store',sup2D:'App Store 개발자 페이지에서 모든 게임과 최신 정보를 확인하세요.',sup2L:'App Store 바로가기 →',
+    sup3T:'개인정보 처리방침',sup3D:'개인정보 규정을 엄격히 준수하며 필요한 데이터만 수집합니다.',sup3L:'자세히 보기 →',
+    sup4T:'평가하기',sup4D:'게임이 마음에 드셨나요? App Store에서 리뷰를 남겨주세요!',sup4L:'평가하기 →',
+    footerCopy:'© 2025 Togother Many Information Technology Co., Ltd. All rights reserved.',
+    footerStore:'App Store',footerGames:'게임',footerAbout:'회사 소개',footerSupport:'지원',
+    dlBtn:'🍎 App Store 다운로드',storeCountry:'kr'
   },
-  en: {
-    title: 'Togother Many - Premium Mobile Games',
-    badge: '🎮 Togother Many · Premium Mobile Games',
-    heroTitle: 'Fun for Every Moment',
-    heroDesc: 'From relaxing farm life to word puzzles, every game is crafted with care to make your spare time enjoyable.',
-    btnExplore: '🎮 Explore Games', btnContact: 'Contact Us',
-    navGames: 'Games', navAbout: 'About', navSupport: 'Support',
-    statN1: '10+', statL1: 'Premium Games', statL2: 'Languages', statL3: 'Platforms', statN4: 'Global', statL4: 'Players',
-    secTagGames: '🎮 OUR GAMES', gamesTitle: 'Our Games', gamesDesc: 'Discover our collection of premium word puzzle games',
-    secTagAbout: 'ABOUT US', aboutTitle: 'Crafting Games with Heart',
-    aboutP1: 'Togother Many Information Technology Co., Ltd. is a mobile game developer dedicated to creating high-quality, relaxing gaming experiences for players around the world.',
-    aboutP2: 'Each of our games is carefully designed to bring joy and relaxation to your daily life, whether it\'s word puzzles, farm simulation, or casual elimination games.',
-    aboutP3: 'All games are fully optimized for iPhone and iPad, ready to enjoy anytime, anywhere.',
-    feat1T: 'Global', feat1D: 'Available worldwide in multiple languages',
-    feat2T: 'Diverse', feat2D: 'Word · Farm · Puzzle · Casual',
-    feat3T: 'Multi-platform', feat3D: 'iPhone · iPad optimized',
-    feat4T: 'Privacy First', feat4D: 'Apple privacy standards compliant',
-    secTagSupport: 'SUPPORT', supportTitle: 'We\'re Here to Help', supportDesc: 'Multiple support channels for your best gaming experience',
-    sup1T: 'Email Support', sup1D: 'Have a question? Email us and we\'ll get back to you quickly.',
-    sup2T: 'App Store', sup2D: 'Visit our developer page on the App Store for all games and updates.', sup2L: 'View on App Store →',
-    sup3T: 'Privacy Policy', sup3D: 'We strictly follow privacy regulations and collect only necessary data.', sup3L: 'View Details →',
-    sup4T: 'Rate Us', sup4D: 'Enjoying our games? Leave a review on the App Store to support us!', sup4L: 'Rate Now →',
-    footerCopy: '© 2025 Togother Many Information Technology Co., Ltd. All rights reserved.',
-    footerStore: 'App Store', footerGames: 'Games', footerAbout: 'About', footerSupport: 'Support',
-    dlBtn: '🍎 Download on App Store', storeCountry: 'us'
+  en:{
+    title:'Togother Many - Premium Mobile Games',badge:'🎮 Togother Many · Premium Mobile Games',
+    heroTitle:'Fun for Every Moment',heroDesc:'From relaxing farm life to word puzzles, every game is crafted with care to make your spare time enjoyable.',
+    btnExplore:'🎮 Explore Games',btnContact:'Contact Us',
+    navGames:'Games',navAbout:'About',navSupport:'Support',
+    statN1:'10+',statL1:'Premium Games',statL2:'Languages',statL3:'Platforms',statN4:'Global',statL4:'Players',
+    secTagGames:'🎮 OUR GAMES',gamesTitle:'Our Games',gamesDesc:'Discover our collection of premium word puzzle games',
+    secTagAbout:'ABOUT US',aboutTitle:'Crafting Games with Heart',
+    aboutP1:'Togother Many Information Technology Co., Ltd. is a mobile game developer dedicated to creating high-quality, relaxing gaming experiences for players around the world.',
+    aboutP2:'Each of our games is carefully designed to bring joy and relaxation to your daily life.',
+    aboutP3:'All games are fully optimized for iPhone and iPad, ready to enjoy anytime, anywhere.',
+    feat1T:'Global',feat1D:'Available worldwide in multiple languages',
+    feat2T:'Diverse',feat2D:'Word · Farm · Puzzle · Casual',
+    feat3T:'Multi-platform',feat3D:'iPhone · iPad optimized',
+    feat4T:'Privacy First',feat4D:'Apple privacy standards compliant',
+    secTagSupport:'SUPPORT',supportTitle:"We're Here to Help",supportDesc:'Multiple support channels for your best gaming experience',
+    sup1T:'Email Support',sup1D:"Have a question? Email us and we'll get back to you quickly.",
+    sup2T:'App Store',sup2D:'Visit our developer page on the App Store for all games and updates.',sup2L:'View on App Store →',
+    sup3T:'Privacy Policy',sup3D:'We strictly follow privacy regulations and collect only necessary data.',sup3L:'View Details →',
+    sup4T:'Rate Us',sup4D:'Enjoying our games? Leave a review on the App Store to support us!',sup4L:'Rate Now →',
+    footerCopy:'© 2025 Togother Many Information Technology Co., Ltd. All rights reserved.',
+    footerStore:'App Store',footerGames:'Games',footerAbout:'About',footerSupport:'Support',
+    dlBtn:'🍎 Download on App Store',storeCountry:'us'
   }
 };
 
-// ─── 各语言游戏数据 ───────────────────────────────────────
 const gamesData = {
-  zh: [
-    { id:'6757685792', name:'我的牧场时光', subtitle:'种田游戏 · 农场牧场物语', desc:'养老治愈种地种菜，田园经营养成游戏。打造属于自己的梦想牧场，感受慢生活的惬意与美好。', tags:['种田养成','治愈休闲','经营模拟'] },
-    { id:'6499131070', name:'疯狂拧螺丝', subtitle:'打螺丝游戏 · 拔钉子大师', desc:'花式拧螺丝解谜，超解压的螺丝拆装玩法，关卡精心设计，越玩越上瘾，停不下来！', tags:['解压益智','拧螺丝','闯关'] },
-    { id:'6472443295', name:'插花小屋', subtitle:'解压插花消除游戏 · 花朵对对碰', desc:'唯美的插花主题搭配爽快消除玩法，解压又治愈，让你的心情像鲜花一样绽放。', tags:['消除对对碰','解压治愈','插花'] },
-    { id:'6465893522', name:'猫咪寻物记', subtitle:'疯狂找东西 · 寻宝达人', desc:'和可爱的猫咪一起踏上寻宝之旅，考验你的观察力，每一关都有新惊喜！', tags:['找不同','寻物解谜','猫咪'] },
-    { id:'1664066060', name:'整理师的任务', subtitle:'货柜爱消除 · 收纳消除游戏', desc:'超解压的整理收纳玩法，把凌乱的货柜整理得井井有条，满足你的收纳强迫症！', tags:['收纳整理','消除益智','解压'] }
+  zh:[
+    {id:'6757685792',name:'我的牧场时光',subtitle:'种田游戏 · 农场牧场物语',desc:'养老治愈种地种菜，田园经营养成游戏。打造属于自己的梦想牧场，感受慢生活的惬意与美好。',tags:['种田养成','治愈休闲','经营模拟']},
+    {id:'6499131070',name:'疯狂拧螺丝',subtitle:'打螺丝游戏 · 拔钉子大师',desc:'花式拧螺丝解谜，超解压的螺丝拆装玩法，关卡精心设计，越玩越上瘾！',tags:['解压益智','拧螺丝','闯关']},
+    {id:'6472443295',name:'插花小屋',subtitle:'解压插花消除游戏 · 花朵对对碰',desc:'唯美的插花主题搭配爽快消除玩法，解压又治愈，让你的心情像鲜花一样绽放。',tags:['消除对对碰','解压治愈','插花']},
+    {id:'6465893522',name:'猫咪寻物记',subtitle:'疯狂找东西 · 寻宝达人',desc:'和可爱的猫咪一起踏上寻宝之旅，考验你的观察力，每一关都有新惊喜！',tags:['找不同','寻物解谜','猫咪']},
+    {id:'1664066060',name:'整理师的任务',subtitle:'货柜爱消除 · 收纳消除游戏',desc:'超解压的整理收纳玩法，把凌乱的货柜整理得井井有条，满足你的收纳强迫症！',tags:['收纳整理','消除益智','解压']}
   ],
-  ja: [
-    { id:'1456689040', name:'日本語スペリング', subtitle:'言葉パズル · スペリングチャレンジ', desc:'日本語の言葉を組み合わせて、スコアを上げよう！語彙力と反応速度を同時に鍛えられる人気パズルゲーム。', tags:['言葉パズル','スペリング','脳トレ'] },
-    { id:'1482750733', name:'ブロック消去パズル', subtitle:'日本語 · ブロック消去ゲーム', desc:'日本語をテーマにしたブロック消去パズル。爽快な消去感と奥深いステージ設計で、ハマること間違いなし！', tags:['ブロック消去','パズル','カジュアル'] },
-    { id:'1501793862', name:'ひらがなブロック', subtitle:'平仮名 · ブロック消去ゲーム', desc:'ひらがなを使ったユニークなブロック消去ゲーム。日本語学習にも最適な、楽しくて教育的なパズル！', tags:['ひらがな','ブロック','教育'] },
-    { id:'1541995347', name:'漢字消去パズル', subtitle:'漢字 · 消去ゲーム', desc:'漢字をテーマにした消去パズルゲーム。漢字の知識を活かしながら、爽快な消去感を楽しもう！', tags:['漢字','消去','パズル'] }
+  ja:[
+    {id:'1456689040',name:'日本語スペリング',subtitle:'言葉パズル · スペリングチャレンジ',desc:'日本語の言葉を組み合わせてスコアを上げよう！語彙力と反応速度を同時に鍛えられる人気パズルゲーム。',tags:['言葉パズル','スペリング','脳トレ']},
+    {id:'1482750733',name:'ブロック消去パズル',subtitle:'日本語 · ブロック消去ゲーム',desc:'日本語テーマのブロック消去パズル。爽快な消去感と奥深いステージ設計でハマること間違いなし！',tags:['ブロック消去','パズル','カジュアル']},
+    {id:'1501793862',name:'ひらがなブロック',subtitle:'平仮名 · ブロック消去ゲーム',desc:'ひらがなを使ったユニークなブロック消去ゲーム。日本語学習にも最適な教育的パズル！',tags:['ひらがな','ブロック','教育']},
+    {id:'1541995347',name:'漢字消去パズル',subtitle:'漢字 · 消去ゲーム',desc:'漢字テーマの消去パズルゲーム。漢字の知識を活かしながら爽快な消去感を楽しもう！',tags:['漢字','消去','パズル']}
   ],
-  ko: [
-    { id:'1472158085', name:'한국어 스펠링', subtitle:'단어 퍼즐 · 스펠링 챌린지', desc:'한국어 단어를 조합하여 점수를 높이세요! 어휘력과 반응 속도를 동시에 기를 수 있는 인기 퍼즐 게임.', tags:['단어 퍼즐','스펠링','두뇌 트레이닝'] }
+  ko:[
+    {id:'1472158085',name:'한국어 스펠링',subtitle:'단어 퍼즐 · 스펠링 챌린지',desc:'한국어 단어를 조합하여 점수를 높이세요！어휘력과 반응 속도를 동시에 기를 수 있는 인기 퍼즐 게임.',tags:['단어 퍼즐','스펠링','두뇌 트레이닝']}
   ],
-  en: [
-    { id:'1605702371', name:'Word Up!', subtitle:'Word Puzzle · Spelling Challenge', desc:'Stack words upward and compete with players around the world! A fast-paced word spelling game that tests your vocabulary and reaction speed.', tags:['Word Puzzle','Spelling','Competitive'] },
-    { id:'1612037965', name:'Hangman Words', subtitle:'Word Game · Stickman Spelling', desc:'A creative twist on the classic hangman game! Spell words to save the stickman in this fun and addictive word puzzle adventure.', tags:['Hangman','Word Game','Puzzle'] }
+  en:[
+    {id:'1605702371',name:'Word Up!',subtitle:'Word Puzzle · Spelling Challenge',desc:'Stack words upward and compete with players worldwide! A fast-paced word spelling game that tests vocabulary and reaction speed.',tags:['Word Puzzle','Spelling','Competitive']},
+    {id:'1612037965',name:'Hangman Words',subtitle:'Word Game · Stickman Spelling',desc:'A creative twist on the classic hangman game! Spell words to save the stickman in this fun and addictive word puzzle adventure.',tags:['Hangman','Word Game','Puzzle']}
   ]
 };
 
-// ─── 检测语言 ─────────────────────────────────────────────
 function detectLang() {
-  const lang = navigator.language || navigator.userLanguage || 'en';
-  const l = lang.toLowerCase();
+  const l = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
   if (l.startsWith('zh')) return 'zh';
   if (l.startsWith('ja')) return 'ja';
   if (l.startsWith('ko')) return 'ko';
   return 'en';
 }
 
-// ─── 应用语言 ─────────────────────────────────────────────
 function applyLang(lang) {
   const t = i18n[lang];
+  document.getElementById('heroBg').style.backgroundImage = heroBgs[lang];
   document.title = t.title;
-  document.getElementById('hero-badge').textContent = t.badge;
-  document.getElementById('hero-title').textContent = t.heroTitle;
-  document.getElementById('hero-desc').textContent = t.heroDesc;
-  document.getElementById('btn-explore').textContent = t.btnExplore;
-  document.getElementById('btn-contact').textContent = t.btnContact;
-  document.getElementById('nav-games').textContent = t.navGames;
-  document.getElementById('nav-about').textContent = t.navAbout;
-  document.getElementById('nav-support').textContent = t.navSupport;
-  document.getElementById('stat-n1').textContent = t.statN1;
-  document.getElementById('stat-l1').textContent = t.statL1;
-  document.getElementById('stat-l2').textContent = t.statL2;
-  document.getElementById('stat-l3').textContent = t.statL3;
-  document.getElementById('stat-n4').textContent = t.statN4;
-  document.getElementById('stat-l4').textContent = t.statL4;
-  document.getElementById('sec-tag-games').textContent = t.secTagGames;
-  document.getElementById('games-title').textContent = t.gamesTitle;
-  document.getElementById('games-desc').textContent = t.gamesDesc;
-  document.getElementById('sec-tag-about').textContent = t.secTagAbout;
-  document.getElementById('about-title').textContent = t.aboutTitle;
-  document.getElementById('about-p1').textContent = t.aboutP1;
-  document.getElementById('about-p2').textContent = t.aboutP2;
-  document.getElementById('about-p3').textContent = t.aboutP3;
-  document.getElementById('feat1-title').textContent = t.feat1T;
-  document.getElementById('feat1-desc').textContent = t.feat1D;
-  document.getElementById('feat2-title').textContent = t.feat2T;
-  document.getElementById('feat2-desc').textContent = t.feat2D;
-  document.getElementById('feat3-title').textContent = t.feat3T;
-  document.getElementById('feat3-desc').textContent = t.feat3D;
-  document.getElementById('feat4-title').textContent = t.feat4T;
-  document.getElementById('feat4-desc').textContent = t.feat4D;
-  document.getElementById('sec-tag-support').textContent = t.secTagSupport;
-  document.getElementById('support-title').textContent = t.supportTitle;
-  document.getElementById('support-desc').textContent = t.supportDesc;
-  document.getElementById('sup1-title').textContent = t.sup1T;
-  document.getElementById('sup1-desc').textContent = t.sup1D;
-  document.getElementById('sup2-title').textContent = t.sup2T;
-  document.getElementById('sup2-desc').textContent = t.sup2D;
-  document.getElementById('sup2-link').textContent = t.sup2L;
-  document.getElementById('sup3-title').textContent = t.sup3T;
-  document.getElementById('sup3-desc').textContent = t.sup3D;
-  document.getElementById('sup3-link').textContent = t.sup3L;
-  document.getElementById('sup4-title').textContent = t.sup4T;
-  document.getElementById('sup4-desc').textContent = t.sup4D;
-  document.getElementById('sup4-link').textContent = t.sup4L;
-  document.getElementById('footer-copy').textContent = t.footerCopy;
-  document.getElementById('footer-store').textContent = t.footerStore;
-  document.getElementById('footer-games').textContent = t.footerGames;
-  document.getElementById('footer-about').textContent = t.footerAbout;
-  document.getElementById('footer-support').textContent = t.footerSupport;
+  const ids = {
+    'hero-badge':t.badge,'hero-title':t.heroTitle,'hero-desc':t.heroDesc,
+    'btn-explore':t.btnExplore,'btn-contact':t.btnContact,
+    'nav-games':t.navGames,'nav-about':t.navAbout,'nav-support':t.navSupport,
+    'stat-n1':t.statN1,'stat-l1':t.statL1,'stat-l2':t.statL2,'stat-l3':t.statL3,'stat-n4':t.statN4,'stat-l4':t.statL4,
+    'sec-tag-games':t.secTagGames,'games-title':t.gamesTitle,'games-desc':t.gamesDesc,
+    'sec-tag-about':t.secTagAbout,'about-title':t.aboutTitle,
+    'about-p1':t.aboutP1,'about-p2':t.aboutP2,'about-p3':t.aboutP3,
+    'feat1-title':t.feat1T,'feat1-desc':t.feat1D,'feat2-title':t.feat2T,'feat2-desc':t.feat2D,
+    'feat3-title':t.feat3T,'feat3-desc':t.feat3D,'feat4-title':t.feat4T,'feat4-desc':t.feat4D,
+    'sec-tag-support':t.secTagSupport,'support-title':t.supportTitle,'support-desc':t.supportDesc,
+    'sup1-title':t.sup1T,'sup1-desc':t.sup1D,'sup2-title':t.sup2T,'sup2-desc':t.sup2D,'sup2-link':t.sup2L,
+    'sup3-title':t.sup3T,'sup3-desc':t.sup3D,'sup3-link':t.sup3L,
+    'sup4-title':t.sup4T,'sup4-desc':t.sup4D,'sup4-link':t.sup4L,
+    'footer-copy':t.footerCopy,'footer-store':t.footerStore,
+    'footer-games':t.footerGames,'footer-about':t.footerAbout,'footer-support':t.footerSupport
+  };
+  Object.entries(ids).forEach(([id,val])=>{
+    const el = document.getElementById(id);
+    if(el) el.textContent = val;
+  });
 }
 
-// ─── 加载游戏卡片 ─────────────────────────────────────────
 async function loadGames(lang) {
   const games = gamesData[lang];
   const t = i18n[lang];
   const grid = document.getElementById('gamesGrid');
-  grid.innerHTML = games.map(g => `
+  grid.innerHTML = games.map(g=>`
     <div class="gc">
       <div class="gc-top">
         <div class="loading-icon" id="icon-${g.id}"></div>
         <div class="gc-title"><h3>${g.name}</h3><span>${g.subtitle}</span></div>
       </div>
       <p>${g.desc}</p>
-      <div class="tags">${g.tags.map(tag => `<span class="t">${tag}</span>`).join('')}</div>
+      <div class="tags">${g.tags.map(tag=>`<span class="t">${tag}</span>`).join('')}</div>
       <a href="https://apps.apple.com/${t.storeCountry}/app/id${g.id}" target="_blank" class="dl-btn">${t.dlBtn}</a>
     </div>
   `).join('');
@@ -432,7 +427,6 @@ async function loadGames(lang) {
   }
 }
 
-// ─── 初始化 ───────────────────────────────────────────────
 const lang = detectLang();
 applyLang(lang);
 loadGames(lang);
