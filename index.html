@@ -401,6 +401,7 @@ async function loadGames(lang) {
   const games = gamesData[lang];
   const t = i18n[lang];
   const grid = document.getElementById('gamesGrid');
+  grid.className = 'games-grid' + (games.length <= 2 ? ` count-${games.length}` : '');
   grid.innerHTML = games.map(g=>`
     <div class="gc">
       <div class="gc-top">
@@ -435,4 +436,5 @@ loadGames(lang);
 </script>
 </body>
 </html>
+
 
