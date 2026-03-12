@@ -409,6 +409,16 @@ function applyLang(lang) {
   };
   const privacyEl = document.getElementById('sup3-link');
   if (privacyEl) privacyEl.href = privacyLinks[lang];
+
+  // App Store 链接按语言切换
+  const storeLinks = {
+    zh: 'https://apps.apple.com/cn/developer/togother-many-information-technology-co-ltd/id1133063360',
+    ja: 'https://apps.apple.com/jp/developer/togother-many-information-technology-co-ltd/id1133063360',
+    ko: 'https://apps.apple.com/kr/developer/togother-many-information-technology-co-ltd/id1133063360',
+    en: 'https://apps.apple.com/us/developer/togother-many-information-technology-co-ltd/id1133063360'
+  };
+  const storeEl = document.getElementById('sup2-link');
+  if (storeEl) storeEl.href = storeLinks[lang];
 }
 
 async function loadGames(lang) {
@@ -450,6 +460,7 @@ loadGames(lang);
 </script>
 </body>
 </html>
+
 
 
 
