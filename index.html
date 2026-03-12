@@ -210,7 +210,7 @@
       <div class="si">🔒</div>
       <h3 id="sup3-title">Privacy Policy</h3>
       <p id="sup3-desc">We strictly follow privacy regulations and collect only necessary data.</p>
-      <a href="https://apps.apple.com/developer/togother-many-information-technology-co-ltd/id1133063360" target="_blank" class="sl" id="sup3-link">View Details →</a>
+      <a href="#" target="_blank" class="sl" id="sup3-link">View Details →</a>
     </div>
     <div class="sc">
       <div class="si">⭐</div>
@@ -400,6 +400,15 @@ function applyLang(lang) {
     if(el) el.textContent = val;
   });
 }
+  // 隐私政策链接按语言切换
+  const privacyLinks = {
+    zh: 'https://ysyntn.com/policy/secret/cn.html',
+    ja: 'https://ysyntn.com/policy/secret/us.html',
+    ko: 'https://ysyntn.com/policy/secret/us.html',
+    en: 'https://ysyntn.com/policy/secret/us.html'
+  };
+  const privacyEl = document.getElementById('sup3-link');
+  if (privacyEl) privacyEl.href = privacyLinks[lang];
 
 async function loadGames(lang) {
   const games = gamesData[lang];
@@ -440,6 +449,7 @@ loadGames(lang);
 </script>
 </body>
 </html>
+
 
 
 
