@@ -399,7 +399,7 @@ function applyLang(lang) {
     const el = document.getElementById(id);
     if(el) el.textContent = val;
   });
-}
+
   // 隐私政策链接按语言切换
   const privacyLinks = {
     zh: 'https://ysyntn.com/policy/secret/cn.html',
@@ -409,6 +409,7 @@ function applyLang(lang) {
   };
   const privacyEl = document.getElementById('sup3-link');
   if (privacyEl) privacyEl.href = privacyLinks[lang];
+}
 
 async function loadGames(lang) {
   const games = gamesData[lang];
@@ -449,6 +450,7 @@ loadGames(lang);
 </script>
 </body>
 </html>
+
 
 
 
